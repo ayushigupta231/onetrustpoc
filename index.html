@@ -1,19 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Demo Website with OneTrust Cookie Banner</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Site with Cookie Banner</title>
 
-  <!-- OneTrust Cookie Consent Script -->
-  <!--
-    Replace the two script tags below with your actual OneTrust scripts from the Implementation section.
-  -->
-  <script src="https://cdn.cookielaw.org/consent/some-id/OtAutoBlock.js"></script>
-  <script src="https://cdn.cookielaw.org/consent/some-id/OtConsent.js"></script>
+  <!-- OneTrust Cookies Consent Notice start for onetrustpoc.vercel.app -->
+  <script type="text/javascript" src="https://cdn.cookielaw.org/consent/4e7e3d7a-3c2a-4e5e-9e7e-7e7e7e7e7e7e-test.js" charset="UTF-8" data-document-language="true"></script>
+  <script type="text/javascript">
+    function OptanonWrapper() { }
+  </script>
+  <!-- OneTrust Cookies Consent Notice end for onetrustpoc.vercel.app -->
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+    }
+    header {
+      background-color: #0073e6;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+    footer {
+      background-color: #f2f2f2;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #333;
+    }
+    footer a {
+      color: #0073e6;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to the Demo Website</h1>
-  <p>This is a simple demo page to test OneTrust cookie consent banner integration.</p>
+
+  <header>
+    <h1>Welcome to Our Demo Site</h1>
+  </header>
+
+  <main>
+    <p>This is a simple demo page to test the OneTrust cookie banner integration.</p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Demo Website. All rights reserved.</p>
+    <p>
+      <a href="/privacy-policy">Privacy Policy</a> |
+      <a href="/terms">Terms of Service</a>
+    </p>
+
+    <!-- OneTrust cookies settings button start -->
+<button id="ot-sdk-btn" class="ot-sdk-show-settings">Cookie settings</button>
+<!-- OneTrust cookies settings button end -->
+    
+  </footer>
+
 </body>
 </html>
