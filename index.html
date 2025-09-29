@@ -1,70 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Demo Site with Cookie Banner</title>
-
-  <!-- OneTrust Cookies Consent Notice start for onetrustpoc.vercel.app -->
-  <script type="text/javascript" src="https://cdn.cookielaw.org/consent/4e7e3d7a-3c2a-4e5e-9e7e-7e7e7e7e7e7e-test.js" charset="UTF-8" data-document-language="true"></script>
-  <script type="text/javascript">
-    function OptanonWrapper() { }
-  </script>
-  <!-- OneTrust Cookies Consent Notice end for onetrustpoc.vercel.app -->
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Demo Cookie Banner</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #ffffff;
-    }
-    header {
-      background-color: #0073e6;
+    #cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0; right: 0;
+      background: #222;
       color: white;
-      padding: 20px;
+      padding: 15px;
       text-align: center;
+      font-family: Arial, sans-serif;
+      display: none;
+      z-index: 1000;
     }
-    main {
-      padding: 40px;
-      text-align: center;
-    }
-    footer {
-      background-color: #f2f2f2;
-      padding: 20px;
-      text-align: center;
-      font-size: 14px;
-      color: #333;
-    }
-    footer a {
-      color: #0073e6;
-      text-decoration: none;
-      margin: 0 10px;
+    #cookie-banner button {
+      background: #4caf50;
+      border: none;
+      padding: 10px 15px;
+      color: white;
+      cursor: pointer;
+      margin-left: 10px;
+      border-radius: 4px;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Welcome to Our Demo Site</h1>
-  </header>
+  <h1>Welcome to Demo Website</h1>
+  <p>Some content here...</p>
 
-  <main>
-    <p>This is a simple demo page to test the OneTrust cookie banner integration.</p>
-  </main>
+  <div id="cookie-banner">
+    This website uses cookies to improve your experience.
+    <button id="accept-cookies">Accept</button>
+  </div>
 
-  <footer>
-    <p>&copy; 2025 Demo Website. All rights reserved.</p>
-    <p>
-      <a href="/privacy-policy">Privacy Policy</a> |
-      <a href="/terms">Terms of Service</a>
-    </p>
+  <script>
+    // Show banner only if no cookie consent yet
+    function getCookie(name) {
+      const value = "; " + document.cookie;
+      const parts = value.split("; " + name + "=");
+      if (parts.length === 2) return parts.pop().split(";").shift();
+    }
 
-    <!-- OneTrust cookies settings button start -->
-<button id="ot-sdk-btn" class="ot-sdk-show-settings">Cookie settings</button>
-<!-- OneTrust cookies settings button end -->
-    
-  </footer>
+    function setCookie(name, value, days) {
+      const d = new Date();
+      d.setTime(d.getTime() + (days*24*60*60*1000));
+      const expires = "expires="+ d.toUTCString();
+      document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    }
 
+    const banner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('accept-cookies');
+
+    if (!getCookie('cookieConsent')) {
+      banner.style.display = 'block';
+    }
+
+    acceptBtn.addEventListener('click', () => {
+      setCookie('cookieConsent', 'accepted', 365);
+      banner.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
